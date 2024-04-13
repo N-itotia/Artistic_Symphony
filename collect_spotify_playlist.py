@@ -22,22 +22,21 @@ db_file = 'spotify_tracks.db'
 
 @app.route('/')
 def home():
-    # Render the landing page
     return render_template('landing_page.html')
 
 @app.route('/fetch_on_repeat')
 def fetch_on_repeat():
-    # Connect to the SQLite database
     conn = sqlite3.connect(db_file)
     cursor = conn.cursor()
 
-    # Create table if it doesn't exist
+    # Create table if it doesn't exist and add a column for reviews
     cursor.execute('''
         CREATE TABLE IF NOT EXISTS tracks (
             id INTEGER PRIMARY KEY AUTOINCREMENT,
             track_name TEXT,
             album_name TEXT,
-            artist_name TEXT
+            artist_name TEXT,
+            review TEXT  -- Added column for storing reviews
         )
     ''')
 
@@ -47,17 +46,15 @@ def fetch_on_repeat():
 
     if on_repeat_playlist:
         playlist_id = on_repeat_playlist['id']
-        
-        # Retrieve tracks and albums
         tracks = sp.playlist_tracks(playlist_id)
         for item in tracks['items']:
             track = item['track']
             album = track['album']
-            artist = track['artists'][0]['name']  # Assuming one main artist per track
+            artist = track['artists'][0]['name']
             # Save to SQLite database
             cursor.execute('''
-                INSERT INTO tracks (track_name, album_name, artist_name) VALUES (?, ?, ?)
-            ''', (track['name'], album['name'], artist))
+                INSERT INTO tracks (track_name, album_name, artist_name, review) VALUES (?, ?, ?, ?)
+            ''', (track['name'], album['name'], artist, None))
             conn.commit()
     else:
         return jsonify({'status': 'On Repeat playlist not found'})
