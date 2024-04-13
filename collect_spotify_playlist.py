@@ -9,8 +9,8 @@ load_dotenv()  # This line loads the environment variables from the .env file
 app = Flask(__name__)
 
 # Spotify API credentials
-client_id = ''
-client_secret = '' 
+client_id = '0dac66ab362e40b6b01f22ab18976966'
+client_secret = '99781acabaec43b28ee20ac5f4fcd464' 
 redirect_uri = 'http://localhost:8888/callback'
 scope = 'playlist-read-private'
 
