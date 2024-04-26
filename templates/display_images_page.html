@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Images Gallery</title>
+    <style>
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 10px;
+        }
+        .grid-item {
+            cursor: pointer;
+        }
+        .grid-item img {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+<body>
+    <h1>Image Gallery</h1>
+    <div class="grid-container">
+        {% for image in images %}
+        <div class="grid-item" onclick="alert('{{ image.song_name }}')">
+            <img src="data:image/png;base64,{{ image.data }}" alt="Generated Image">
+        </div>
+        {% endfor %}
+    </div>
+</body>
+</html>

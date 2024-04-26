@@ -3,8 +3,9 @@ import os
 import sqlite3
 import requests
 
+
 # Configure Gemini API with your API key from the .env file
-genai.configure(api_key='')  # Replace with your actual API key
+genai.configure(api_key='AIzaSyC2d-4jtz9QLSyRZ2a-0Hsom9B-e03wF5Q')  # Replace with your actual API key
 image_model = genai.GenerativeModel('models/gemini-pro')  # Assuming model availability
 
 # Database connection

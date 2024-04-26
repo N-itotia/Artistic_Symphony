@@ -12,7 +12,10 @@
         <p>Discover the beauty of music and art combined.</p>
     </header>
     <main>
-        <!-- Content about Artistic Symphony -->
+        <form action="{{ url_for('fetch_songs') }}" method="post">
+            <input type="text" name="api_key" placeholder="Enter your Spotify API Key" required>
+            <button type="submit">Submit</button>
+        </form>
     </main>
     <footer>
         <p>© 2024 Artistic Symphony</p>

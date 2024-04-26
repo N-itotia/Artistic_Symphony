@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Review Images</title>
+</head>
+<body>
+    <h1>Images Based on Song Reviews</h1>
+    {% if songs_reviews %}
+        {% for song, images in songs_reviews.items() %}
+            <h2>{{ song }}</h2>
+            {% for image in images %}
+                <img src="data:image/png;base64,{{ image }}" alt="Generated Image">
+            {% endfor %}
+        {% endfor %}
+    {% else %}
+        <p>No reviews available.</p>
+    {% endif %}
+</body>
+</html>
