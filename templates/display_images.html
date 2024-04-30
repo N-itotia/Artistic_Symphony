@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generated Images</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: 'Arial', sans-serif;
+            background-color: #f0f0f0;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+        header, footer {
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #707070; /* Changed to gray */
+            color: white;
+            font-size: 18px;
+            width: 100%;
+        }
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        footer {
+            position: fixed;
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        main {
+            flex: 1;
+            padding-top: 60px; /* Added space for the header */
+            padding-bottom: 40px; /* Added space for the footer */
+            width: 100%;
+            overflow: auto;
+        }
+        h1 {
+            text-align: center;
+            margin-top: 20px; /* Adjusted top margin */
+        }
+        .grid-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+            justify-content: center;
+        }
+        .grid-item img {
+            width: 100%;
+            height: auto;
+            border-radius: 8px;
+            transition: transform 0.3s ease;
+        }
+        .grid-item:hover img {
+            transform: scale(1.05);
+            cursor: pointer;
+        }
+        button {
+            display: block;
+            width: 200px;
+            margin: 20px auto;
+            padding: 10px 20px;
+            font-size: 16px;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Welcome to the Image Gallery
+    </header>
+    <main>
+        <h1>Generated Images</h1>
+        <div class="grid-container">
+            {% for image in images %}
+                <div class="grid-item" onclick="alert('Song: {{ image.song_name }}')">
+                    <img src="data:image/png;base64,{{ image.data }}" alt="Generated Image">
+                </div>
+            {% endfor %}
+        </div>
+        <button onclick="window.location.reload();">Regenerate</button>
+    </main>
+    <footer>
+        © 2024 
+    </footer>
+</body>
+</html>

@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Successfully Logged In</title>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            background-color: #f0f0f0;
+            font-family: 'Arial', sans-serif;
+            color: #333;
+            margin: 0;
+        }
+        header, footer {
+            text-align: center;
+            padding: 10px 20px;
+            background-color: #707070; /* Changed to gray */
+            color: white;
+            font-size: 18px;
+            width: 100%;
+            position: fixed; /* Ensure both are fixed */
+        }
+        header {
+            top: 0;
+            left: 0;
+            right: 0;
+        }
+        footer {
+            bottom: 0;
+            left: 0;
+            right: 0;
+        }
+        .container {
+            text-align: center;
+            background-color: white;
+            padding: 40px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+            margin-top: 60px; /* Adjusted to prevent overlap with the header */
+            margin-bottom: 40px; /* Space for the footer */
+            width: calc(100% - 80px); /* Adjust width to allow padding from sides */
+            max-width: 600px; /* Optional: limits the width on very large screens */
+        }
+        h1 {
+            margin-bottom: 20px;
+        }
+        button {
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            font-size: 16px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        Artistic Symphony
+    </header>
+    <div class="container">
+        <h1>Successfully Logged In</h1>
+        <button onclick="window.location.href='/generate_images'">Generate Images</button>
+    </div>
+    <footer>
+        © 2024 Artistic Symphony. All rights reserved.
+    </footer>
+</body>
+</html>
